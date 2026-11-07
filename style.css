@@ -1,0 +1,172 @@
+/* استدعاء خط عربي أنيق واحترافي من جوجل */
+@import url('https://googleapis.com');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Tajawal', Arial, sans-serif;
+}
+
+body {
+    /* خلفية متدرجة مبهجة وملونة تحسن مظهر الصفحة بالكامل */
+    background: linear-gradient(135deg, #e0e7ff 0%, #fef3c7 50%, #f0fdf4 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    direction: rtl; /* لضبط اتجاه العناصر والنصوص للغة العربية */
+    padding: 20px;
+}
+
+/* الكارت الرئيسي (صندوق المحلل) */
+.analyzer-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 35px 30px;
+    border-radius: 20px;
+    max-width: 460px;
+    width: 100%;
+    /* ظلال ناعمة متعددة الطبقات لتعطي تأثيراً ثلاثي الأبعاد مجسم */
+    box-shadow: 0 10px 30px rgba(79, 70, 229, 0.08), 0 1px 3px rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+/* عنوان الصفحة الرئيسي */
+h2 {
+    color: #312e81;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 24px;
+    letter-spacing: -0.5px;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+/* خط ملون صغير أسفل العنوان الرئيسي للتنظيم */
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(to right, #4f46e5, #06b6d4);
+    border-radius: 2px;
+}
+
+/* تنسيق العناوين الجانبية للأسماء */
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #4338ca; /* لون نيلي منسق */
+    font-weight: 700;
+    font-size: 14px;
+}
+
+/* تنسيق حقول الإدخال */
+input {
+    width: 100%;
+    padding: 14px 18px;
+    margin-bottom: 22px;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #1e293b;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #f8fafc;
+}
+
+/* تأثير حركي ملون عند الضغط والكتابة داخل الحقل */
+input:focus {
+    border-color: #4f46e5;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.12);
+    outline: none;
+}
+
+/* زر التحليل الملون والمتفاعل */
+button {
+    width: 100%;
+    /* خلفية متدرجة مميزة وجاذبة للعين */
+    background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+    transition: all 0.2s ease;
+    margin-top: 5px;
+}
+
+/* تأثير عند تمرير الماوس فوق الزر */
+button:hover {
+    background: linear-gradient(135deg, #4338ca 0%, #2563eb 100%);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.35);
+}
+
+/* تأثير عند الضغط الفعلي على الزر */
+button:active {
+    transform: scale(0.98);
+}
+
+/* صندوق عرض التقرير والنتيجة */
+#reportBox {
+    margin-top: 30px;
+    padding: 22px;
+    background: linear-gradient(to bottom left, #f0fdf4, #dcfce7); /* ألوان نجاح متدرجة ومريحة */
+    border-right: 6px solid #16a34a;
+    border-radius: 14px;
+    display: none;
+    box-shadow: 0 4px 15px rgba(22, 163, 74, 0.08);
+    animation: slideDown 0.4s ease-out; /* حركة دخول ناعمة للنتيجة */
+}
+
+#reportBox h4 {
+    color: #14532d;
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(22, 163, 74, 0.2);
+    padding-bottom: 6px;
+}
+
+#reportBox p {
+    margin-bottom: 10px;
+    color: #166534;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+#reportBox p:last-child {
+    margin-bottom: 0;
+}
+
+#reportBox strong {
+    color: #14532d;
+    font-weight: 700;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 2px 8px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+/* أنيميشن الدخول التلقائي لصندوق النتيجة */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
